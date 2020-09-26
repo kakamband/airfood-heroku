@@ -7,9 +7,9 @@ from rest_framework.routers import DefaultRouter
 
 router1 = DefaultRouter()
 
-router1.register('restoran/(?P<restoran_id>\d+)/table/(?P<table_number>\d+)', RestoranTablesViewSet, base_name="restoran_categoryes" )
-router1.register('restoran/(?P<restoran_id>\d+)/table/(?P<table_number>\d+)/category/(?P<c_id>\d+)', ProductListViewSet, base_name="product_lists")
-router1.register('restoran/(?P<restoran_id>\d+)/table/(?P<table_number>\d+)/category/(?P<c_id>\d+)/product/(?P<p_id>\d+)', ProductDetailViewSet, base_name="product_detail")
+router1.register('restoran/(?P<restoran_id>\d+)/table/(?P<table_number>\d+)', RestoranTablesViewSet, basename="restoran_categoryes" )
+router1.register('restoran/(?P<restoran_id>\d+)/table/(?P<table_number>\d+)/category/(?P<c_id>\d+)', ProductListViewSet, basename="product_lists")
+router1.register('restoran/(?P<restoran_id>\d+)/table/(?P<table_number>\d+)/category/(?P<c_id>\d+)/product/(?P<p_id>\d+)', ProductDetailViewSet, basename="product_detail")
 
 
 urlpatterns = [

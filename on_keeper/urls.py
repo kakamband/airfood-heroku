@@ -24,17 +24,17 @@ from app.views import *
 
 router = DefaultRouter()
 
-router.register('create/client', ClientViewSet, base_name='create_client')
-router.register('create/worker', UserViewSet, base_name='create_worker')
+router.register('create/client', ClientViewSet, basename='create_client')
+router.register('create/worker', UserViewSet, basename='create_worker')
 router.register('category',CategoryViewSet)
-router.register('restorans',RestoransViewSet, base_name='restoran_lists')
+router.register('restorans',RestoransViewSet, basename='restoran_lists')
 router.register('products', ProductViewSet)
-router.register('restoran/(?P<r_id>\d+)/products/lists', RestoranProductsViewSet, base_name='restoran_products_lists')
-router.register('restoran/(?P<r_id>\d+)/category/(?P<c_id>\d+)/product/(?P<p_id>\d+)/detail', RestoranProductDetailViewSet, base_name='restoran_product_detail')
-router.register('restoran/(?P<r_id>\d+)/category', CategoryListsViewSet, base_name='restoran_category_lists')
-router.register('restoran/(?P<r_id>\d+)/category/(?P<c_id>\d+)/products', RsCtgProductViewSet, base_name='restoran_ctg_products_lists')
-router.register('restoran/(?P<r_id>\d+)/worker/lists', WorkerListsViewSet, base_name='worker_lists')
-# router.register('restoran/(?P<r_id>\d+)/worker/(?P<w_id>\d+)/detail', WorkerControlViewSet, base_name='worker_detail')
+router.register('restoran/(?P<r_id>\d+)/products/lists', RestoranProductsViewSet, basename='restoran_products_lists')
+router.register('restoran/(?P<r_id>\d+)/category/(?P<c_id>\d+)/product/(?P<p_id>\d+)/detail', RestoranProductDetailViewSet, basename='restoran_product_detail')
+router.register('restoran/(?P<r_id>\d+)/category', CategoryListsViewSet, basename='restoran_category_lists')
+router.register('restoran/(?P<r_id>\d+)/category/(?P<c_id>\d+)/products', RsCtgProductViewSet, basename='restoran_ctg_products_lists')
+router.register('restoran/(?P<r_id>\d+)/worker/lists', WorkerListsViewSet, basename='worker_lists')
+# router.register('restoran/(?P<r_id>\d+)/worker/(?P<w_id>\d+)/detail', WorkerControlViewSet, basename='worker_detail')
 
 
 urlpatterns = [

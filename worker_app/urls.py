@@ -7,7 +7,7 @@ from rest_framework.routers import DefaultRouter
 
 router1 = DefaultRouter()
 
-router1.register('restoran/(?P<r_id>\d+)', TableViewSet, base_name="restoran_tables" )
+router1.register('restoran/(?P<r_id>\d+)', TableViewSet, basename="restoran_tables" )
 
 
 urlpatterns = [
