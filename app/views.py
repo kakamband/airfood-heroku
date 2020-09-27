@@ -176,3 +176,41 @@ class WorkerControlViewSet(APIView):
         w.save()
         return Response({"status": 'Success!!! :)'})
 
+
+
+#   Employee Api ресторан қызметкерлерінің тізімі шығу керек api 
+
+class EmployeeListViewSet(APIView):
+    def get(self, request, r_id):
+        employees = UserProfile.objects.filter(restoran=r_id, status=1)
+        lists = []
+        for i in employees:
+            w_lists = []
+            working_days = WorkTimes.objects.filter(worker=i.id, status = 1).order_by('week')
+            for j in working_days:
+                w_lists.append({
+                    'day': j.week,
+                    'hour_begin': j.hour_begin,
+                    'hour_end': j.hour_end
+                })
+            lists.append({
+                'id': i.id,
+                'name': i.first_name +' '+ i.last_name,
+                'duty': i.duty,
+                'salary': i.wage,
+                'working_days': w_lists
+            })
+        return Response(lists)
+
+    def put(self, request, r_id):
+        data = request.data
+        working_days = WorkTimes.objects.filter(worker__id=data['id']).order_by('week')
+        working_days.update(status=0, hour_begin=None, hour_end=None)
+        for i in data['working_days']:
+            # working_days[int(i['day'])-1].status = 1
+            # working_days[int(i['day'])-1].hour_begin = i['hour_begin']
+            # working_days[int(i['day'])-1].hour_end = i['hour_end']
+            # print(working_days[int(i['day'])-1].status)
+            working_days[int(i['day'])-1].save_days(i['hour_begin'], i['hour_end'])
+
+        return Response({"status": 'success'})

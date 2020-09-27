@@ -158,3 +158,9 @@ class WorkTimes(models.Model):
     status = models.SmallIntegerField(blank=True, default=0)
     hour_begin = models.TimeField(null=True)
     hour_end = models.TimeField(null=True)
+
+    def save_days(self, b, e):
+        self.status = 1
+        self.hour_begin = b
+        self.hour_end = e
+        self.save()
