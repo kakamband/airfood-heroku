@@ -1,1 +1,1 @@
-web: gunicorn on_keeper.wsgi --log-file -
+web: gunicorn on_keeper.wsgi
