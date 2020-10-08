@@ -1,1 +1,1 @@
-web: gunicorn on_keeper.wsgi:application --log-file - --log-level debug
+web: gunicorn on_keeper.wsgi:application --preload --workers 1
